@@ -73,7 +73,7 @@ class CalculatorTest {
     void shouldGetFactorial(int a) {assertEquals(6, calc.factorial(a));}
 
     @ParameterizedTest
-    @ValueSource(strings = {"racecar", "nolemonnomelon", "level", "mom", "civic" })
+    @ValueSource(strings = {"racecar", "nolemonnomelon", "level", "nicole", "civic" })
     void shouldKnowIfStringIsPalindrome(String n) { assertEquals(true, calc.isPalindrome(n));
     }
 

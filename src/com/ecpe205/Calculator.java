@@ -3,7 +3,7 @@ package com.ecpe205;
 import java.util.Queue;
 import java.util.Stack;
 
-import static java.lang.ref.Finalizer.queue;
+
 
 public class Calculator {
     public double sum( double a, double b ) {
@@ -23,15 +23,16 @@ public class Calculator {
             fact=fact*i;
         }return fact;}
 
-    public String Palindrome(String n) {
-        String reverseStr = "";
-
-        int strLength = n.length();
-
-        for (int i = (strLength - 1); i >=0; --i) {
-            reverseStr = reverseStr + n.charAt(i);
+    public static boolean isPalindrome(String name) {
+        String originalString = name;
+        int i = 0, j = name.length() - 1;
+        while (i < j) {
+            if (name.charAt(i) != name.charAt(j)) return false;
+            i++;
+            j--;
         }
-        }
+        return originalString.equalsIgnoreCase(name);
+    }
 
         //create a method that computes base x power of y
         //use parameterizedTest methodsource - 5 sets to test
