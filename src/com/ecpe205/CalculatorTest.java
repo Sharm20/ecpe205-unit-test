@@ -31,6 +31,7 @@ class CalculatorTest {
     }
 
 
+
     @Test
     @DisplayName("Sum 2 encoded values")
     void shouldSumTwoEncodedValues() {
@@ -40,6 +41,15 @@ class CalculatorTest {
         assertEquals(9, calc.sum(5,4) );
         assertEquals(5, calc.sum(3,2) );
         assertEquals(14, calc.sum(5,9) );
+    }
+
+    @Test
+    @DisplayName("testing")
+    void shouldtestBaseMethod(){
+        assertEquals(8, calc.base(2,3) );
+        assertEquals(32, calc.base(2,5) );
+        assertEquals(216, calc.base(6,3) );
+        assertEquals(1, calc.base(1, 2 ));
     }
 
     @ParameterizedTest
@@ -52,6 +62,19 @@ class CalculatorTest {
     @MethodSource("sumInputValues")
     void shouldSumTwoInputValues(int a, int b) {
         assertEquals(a + b, calc.sum(a, b));
+    }
+
+    @ParameterizedTest
+    @MethodSource("BaseXPowerY")
+    void shouldMultiplyBaseToExponent(int x, int y ){ assertEquals( Math.pow(x, y), calc.base(x, y));}
+
+    @ParameterizedTest
+    @ValueSource(ints = {3,6,9,10,12})
+    void shouldGetFactorial(int a) {assertEquals(6, calc.factorial(a));}
+
+    @ParameterizedTest
+    @ValueSource(strings = {"racecar", "nolemonnomelon", "level", "mom", "civic" })
+    void shouldKnowIfStringIsPalindrome(String n) { assertEquals(true, calc.isPalindrome(n));
     }
 
     static Stream<Arguments> sumInputValues () {
@@ -71,4 +94,16 @@ class CalculatorTest {
                 Arguments.of(new int[]{7,2,8,3,4})
         );
     }
+
+    static Stream<Arguments>  BaseXPowerY(){
+        return Stream.of (
+                    Arguments.of(2, 3),
+                    Arguments.of(8, 9),
+                    Arguments.of(4, 7),
+                    Arguments.of(12, 3),
+                    Arguments.of(9, 5)
+                );
+    }
+
 }
+
